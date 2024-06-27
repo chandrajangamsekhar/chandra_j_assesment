@@ -30,5 +30,26 @@ RSpec.describe Calculator do
         end
       end
     end
+
+    context 'when the input is an empty string' do
+      it 'returns 0' do
+        calculator = Calculator.new
+        expect(calculator.add('')).to eq(0)
+      end
+    end
+
+    context 'when the input contains newline characters as delimiters' do
+      it 'returns the sum of the numbers' do
+        calculator = Calculator.new
+        expect(calculator.add("1\n2,3")).to eq(6)
+      end
+    end
+
+    context 'when the input contains a custom delimiter' do
+      it 'returns the sum of the numbers using the custom delimiter' do
+        calculator = Calculator.new
+        expect(calculator.add("//;\n1;2")).to eq(3)
+      end
+    end
   end
 end
